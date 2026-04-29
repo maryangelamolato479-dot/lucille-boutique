@@ -1,0 +1,24 @@
+// --- DELETE: Remove Product and its Image File ---
+if (isset($_GET['delete'])) {
+    $id = intval($_GET['delete']);
+
+    // 1. Get the image filename before deleting the record
+    $res = mysqli_query($conn, "SELECT image FROM products WHERE id=$id");
+    $row = mysqli_fetch_assoc($res);
+    $imageToDelete = $row['image'];
+
+    // 2. Delete the actual file from the folder (don't delete default.jpg!)
+    if ($imageToDelete != 'default.jpg' && !empty($imageToDelete)) {
+        $filePath = "images/" . $imageToDelete;
+        if (file_exists($filePath)) {
+            unlink($filePath); // This command deletes the file
+        }
+    }
+
+    // 3. Delete from database
+    mysqli_query($conn, "DELETE FROM products WHERE id=$id");
+    
+    // Redirect to refresh the list and clean the URL
+    header("Location: index.php");
+    exit();
+}

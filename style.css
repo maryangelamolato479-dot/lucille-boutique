@@ -1,0 +1,23 @@
+a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Specific style for delete to prevent accidental clicks */
+a[href*="delete"] {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+.btn-add {
+    background: #28a745;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 20px;
+}

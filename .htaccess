@@ -1,0 +1,12 @@
+<?php
+$host = "localhost";
+$user = "root";
+$pass = "";
+$db   = "lucille_boutique";
+
+$conn = mysqli_connect($host, $user, $pass, $db);
+
+if (!$conn) {
+    die("Database Connection Error: " . mysqli_connect_error());
+}
+?>
